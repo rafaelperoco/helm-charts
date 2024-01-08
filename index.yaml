@@ -3,6 +3,16 @@ entries:
   homedns:
   - apiVersion: v2
     appVersion: 1.1.4
+    created: "2024-01-08T14:42:43.861411076Z"
+    description: A Helm chart for Kubernetes to deploy HomeDNS
+    digest: 88d585046a870344d8bfe8c42ae94428a477b2fcf4213edf51b188f41efaa218
+    name: homedns
+    type: application
+    urls:
+    - https://github.com/rafaelperoco/helm-charts/releases/download/homedns-1.0.5/homedns-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 1.1.4
     created: "2024-01-08T14:31:38.77986782Z"
     description: A Helm chart for Kubernetes to deploy HomeDNS
     digest: 68297e8a3bfb1c02b7c64ce87ff9a3e36975fab50fbd00cb05f8b3cddfb298b0
@@ -110,4 +120,4 @@ entries:
     urls:
     - https://github.com/rafaelperoco/helm-charts/releases/download/unifi-controller-2.5.1/unifi-controller-2.5.1.tgz
     version: 2.5.1
-generated: "2024-01-08T14:31:38.780183569Z"
+generated: "2024-01-08T14:42:43.861441032Z"
