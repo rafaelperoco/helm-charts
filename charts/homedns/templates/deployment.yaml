@@ -29,7 +29,7 @@ spec:
       # init continer touch /tmp/healthy
       initContainers:
         - name: init
-          image: busybox
+          image: alpine
           command: ['sh', '-c', 'touch /tmp/healthy']
           volumeMounts:
             - name: tmp
