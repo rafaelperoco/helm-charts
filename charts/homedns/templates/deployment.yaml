@@ -26,14 +26,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "homedns.serviceAccountName" . }}
-      # init continer touch /tmp/healthy
-      initContainers:
-        - name: init
-          image: alpine
-          command: ['sh', '-c', 'touch /tmp/healthy']
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
       containers:
         - name: {{ .Chart.Name }}
           args:
@@ -51,19 +43,6 @@ spec:
             - name: {{ .Values.service.name }}
               containerPort: 5000
               protocol: UDP
-          livenessProbe:
-            exec:
-              command:
-                - cat
-                - /tmp/healthy
-          readinessProbe:
-            exec:
-              command:
-                - cat
-                - /tmp/healthy
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -78,6 +57,3 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      volumes:
-        - name: tmp
-          emptyDir: {}
