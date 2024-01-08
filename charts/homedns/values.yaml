@@ -1,0 +1,39 @@
+replicaCount: 2
+
+image:
+  repository: "docker.io/rafaelperoco/homedns"
+  pullPolicy: IfNotPresent
+  tag: "1.1.4"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: "homedns"
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+service:
+  name: dns
+  type: ClusterIP
+  port: 5000
+  protocol: UDP
+
+resources:
+  limits:
+    cpu: 20m
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 64Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
