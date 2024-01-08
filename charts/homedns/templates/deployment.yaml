@@ -28,6 +28,10 @@ spec:
       serviceAccountName: {{ include "homedns.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
+          args:
+          {{- range .Values.args }}
+            - {{ . | quote }}
+          {{- end }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
