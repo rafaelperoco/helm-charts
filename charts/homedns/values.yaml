@@ -23,6 +23,7 @@ service:
   type: ClusterIP
   port: 5000
   protocol: UDP
+  loadBalancerIP: ""
 
 resources:
   limits:
