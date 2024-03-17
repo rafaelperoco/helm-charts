@@ -1,0 +1,40 @@
+clusterSecretStore:
+  enabled: true
+  name: my-cluster-secret-store
+  namespace: my-namespace
+  provider:
+    vault:
+      server: "http://my.vault.server:8200"
+      path: "secret"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+  refreshInterval: 1h
+
+secretStore:
+  enabled: true
+  name: vault-backend
+  provider:
+    vault:
+      server: "http://my.vault.server:8200"
+      path: "secret"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+          key: "token"
+
+externalsecrets:
+  name: my-external-secrets
+  namespace: my-namespace
+  secretStoreRef:
+    name: my-secret-store
+    namespace: my-namespace
+  target:
+    name: my-secret
+    namespace: my-namespace
+  data:
+    - key: my-key
+      name: my-secret
+      property: my-property
